@@ -60,7 +60,7 @@ function analyzeSalesData(data, options) {
   if (!data || !Array.isArray(data.sellers)) {
     throw new Error("Некорректные входные данные");
   }
-  
+
   if (typeof options !== "object") {
     throw new Error("Не был сформирован объект функций!");
   }
@@ -121,8 +121,10 @@ function analyzeSalesData(data, options) {
       // Учёт количества проданных товаров
       if (!seller.products_sold[item.sku]) {
         seller.products_sold[item.sku] = 0;
+      } else {
+        seller.products_sold[item.sku] += 1;
       }
-      seller.products_sold[item.sku] += 1; // По артикулу товара увеличить его проданное количество у продавца
+       // По артикулу товара увеличить его проданное количество у продавца
     });
   });
 
@@ -142,6 +144,8 @@ function analyzeSalesData(data, options) {
       })
       .slice(0, 10);
   });
+
+  console.log(sellerStats)
 
   // @TODO: Подготовка итоговой коллекции с нужными полями
 
