@@ -37,14 +37,15 @@ function calculateBonusByProfit(index, total, seller) {
     throw new Error("Не был сформирован объект с продавцами!");
   }
   if (index === 0) {
-    return 0.15 * profit
+    return 0.15 * profit;
   } else if (index === 1 || index === 2) {
-      return 0.1 * profit
+    return 0.1 * profit;
   } else if (index === total - 1) {
-      return 0;
-  } else { // Для всех остальных
-      return profit * 0.05;
-  } 
+    return 0;
+  } else {
+    // Для всех остальных
+    return profit * 0.05;
+  }
 }
 
 /**
@@ -56,11 +57,14 @@ function calculateBonusByProfit(index, total, seller) {
 function analyzeSalesData(data, options) {
   // @TODO: Проверка входных данных
   const { calculateRevenue, calculateBonus } = options;
-
+  if (!data || !Array.isArray(data.sellers)) {
+    throw new Error("Некорректные входные данные");
+  }
+  
   if (typeof options !== "object") {
     throw new Error("Не был сформирован объект функций!");
   }
-  
+
   if (!data.purchase_records || data.purchase_records.length === 0) {
     throw new Error("Массив с чеками пуст!");
   }
