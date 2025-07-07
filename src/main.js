@@ -60,7 +60,6 @@ function analyzeSalesData(data, options) {
   if (!data || !Array.isArray(data.sellers)) {
     throw new Error("Некорректные входные данные");
   }
-
   if (typeof options !== "object") {
     throw new Error("Не был сформирован объект функций!");
   }
@@ -142,8 +141,6 @@ function analyzeSalesData(data, options) {
       })
       .slice(0, 10);
   });
-
-  console.log(sellerStats)
 
   // @TODO: Подготовка итоговой коллекции с нужными полями
 
