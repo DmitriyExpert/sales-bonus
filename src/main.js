@@ -63,6 +63,10 @@ function analyzeSalesData(data, options) {
   if (typeof options !== "object") {
     throw new Error("Не был сформирован объект функций!");
   }
+  
+  if (!data.purchase_records || data.purchase_records.length === 0) {
+    throw new Error("Массив с чеками пуст!");
+  }
 
   if (
     typeof calculateBonus !== "function" ||
@@ -77,7 +81,6 @@ function analyzeSalesData(data, options) {
     throw new Error("Чего-то не хватает");
   }
 
-  
   // @TODO: Подготовка промежуточных данных для сбора статистики
 
   const sellerStats = data.sellers.map((seller) => {
