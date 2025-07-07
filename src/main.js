@@ -36,18 +36,15 @@ function calculateBonusByProfit(index, total, seller) {
   if (typeof seller !== "object") {
     throw new Error("Не был сформирован объект с продавцами!");
   }
-  index++;
-  switch (index) {
-    case 1:
-      return profit * 0.15;
-    case 2:
-    case 3:
-      return profit * 0.1;
-    case total:
+  if (index === 0) {
+    return 0.15 * profit
+  } else if (index === 1 || index === 2) {
+      return 0.1 * profit
+  } else if (index === total - 1) {
       return 0;
-    default:
+  } else { // Для всех остальных
       return profit * 0.05;
-  }
+  } 
 }
 
 /**
