@@ -77,14 +77,7 @@ function analyzeSalesData(data, options) {
     throw new Error("Чего-то не хватает");
   }
 
-  if (
-    data.seller.length === 0 ||
-    data.products.length === 0 ||
-    data.purchase_records === 0
-  ) {
-    throw new Error("Некоторые массивы данных пусты!");
-  }
-
+  
   // @TODO: Подготовка промежуточных данных для сбора статистики
 
   const sellerStats = data.sellers.map((seller) => {
