@@ -121,10 +121,8 @@ function analyzeSalesData(data, options) {
       // Учёт количества проданных товаров
       if (!seller.products_sold[item.sku]) {
         seller.products_sold[item.sku] = 0;
-      } else {
-        seller.products_sold[item.sku] += 1;
       }
-       // По артикулу товара увеличить его проданное количество у продавца
+      seller.products_sold[item.sku] += 1; // По артикулу товара увеличить его проданное количество у продавца
     });
   });
 
